@@ -1,1 +1,1 @@
-​
+For non-unicode characters i.e.(only English alphabets), we can take an array of length 26, then the solution will be of T.C:O(N),S.C:O(1)
