@@ -40,7 +40,8 @@ public:
         }
         // return 0;
         // return dp[n][t]+dp[n][t]*count0;
-        return dp[n][t]+ dp[n][t]*(int(pow(2,count0)+0.5)-1);
+        // return dp[n][t]+ dp[n][t]*(int(pow(2,count0)+0.5)-1);
+        return dp[n][t]*(int(pow(2,count0)+0.5));
         // return dp[n][t];
     }
 };
