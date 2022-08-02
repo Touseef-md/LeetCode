@@ -4,9 +4,11 @@
 <br>
 **Solution**
 <br>
+**Approach 1: Using Max-Heap**
 Iterate through each and every element and push k+1 elements in the priority_queue and always pop the max element from the priority_queue, this will ensure that we'll have k smallest elements in the priority_queue.
 <br>
 There is also a edge case, see the code.
-**Approach 2**
+**Approach 2: Using Min-Heap**
 Binary Search
+**Approach 3:Using Binary Seach**
 ​
