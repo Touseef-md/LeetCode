@@ -1,6 +1,6 @@
 **NOT ABLE TO GET THE LOGIC CORRECT**
 <br>
-​
+I was trying to make a dp state such that if we have a solution to the problem of circle having n elements then we can figure out a solution of n+1 elements JUST AS THE SOLUTION TO THE **JOSEPHEUS PROBELM**.
 <br>
 **DO IT AGAIN**
 <br>
