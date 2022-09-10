@@ -45,13 +45,13 @@ public:
         }
     }
     int maxProfit(int k, vector<int>& prices) {
-        // if(2*k>prices.size()){
-        //     int profit=0;
-        //     for(int i=1;i<prices.size();i++){
-        //         profit+=max(0,prices[i]-prices[i-1]);
-        //     }
-        //     return profit;
-        // }
+        if(2*k>prices.size()){
+            int profit=0;
+            for(int i=1;i<prices.size();i++){
+                profit+=max(0,prices[i]-prices[i-1]);
+            }
+            return profit;
+        }
         dp.clear();
         dp.resize(prices.size(),vector<vector<int>>(k+1,vector<int>(2,-1)));
         return fun(k,0,prices,0);
