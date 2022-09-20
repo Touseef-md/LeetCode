@@ -22,10 +22,28 @@ public:
     int findLength(vector<int>& nums1, vector<int>& nums2) {
         dp.clear();
         dp.resize(nums1.size(),vector<int>(nums2.size(),-1));
-        max_len_rep_subarray(nums1,nums2,nums1.size()-1,nums2.size()-1);
+        //REcursive Solution
+        // max_len_rep_subarray(nums1,nums2,nums1.size()-1,nums2.size()-1);
+        // int maxi=0;
+        // for(int i=0;i<dp.size();i++){
+            // for(int j=0;j<dp[0].size();j++){
+                // maxi=max(maxi,dp[i][j]);
+            // }
+        // }
+        // return maxi;
+        
+        //Iterative SOlution
         int maxi=0;
-        for(int i=0;i<dp.size();i++){
-            for(int j=0;j<dp[0].size();j++){
+        for(int i=0;i<nums1.size();i++){
+            for(int j=0;j<nums2.size();j++){
+                if(nums1[i]==nums2[j]){
+                    if(i==0||j==0)
+                        dp[i][j]=1;
+                    else
+                        dp[i][j]=dp[i-1][j-1]+1;
+                }
+                else
+                    dp[i][j]=0;
                 maxi=max(maxi,dp[i][j]);
             }
         }
