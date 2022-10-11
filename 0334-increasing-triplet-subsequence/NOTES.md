@@ -1,5 +1,7 @@
 **Problem Faced**
 <br>
+This problem can also be solved with O(N) time complexity.
+<br>
 I got the logic in some time, but got stuck in the implementation. Logic is that I will keep 2 maps one storing the left elements and the other storing the right elements of the current element and I will search for a smaller element in the left map and a greater element in the right map using lower and upper bound.There were many edge cases.
 <br>
 Cases I have to handle here:
