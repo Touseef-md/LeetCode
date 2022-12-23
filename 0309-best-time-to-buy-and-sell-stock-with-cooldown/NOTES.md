@@ -1,0 +1,1 @@
+Not able to solve on the second time, approach was not fully correct. I was thinking that we should check the case when there is a downhill before and after i and an uphill after i+1. I was thinking around this. But this test case showed that this approach is wrong. [6,1,2,4,7] answer should be 6.
