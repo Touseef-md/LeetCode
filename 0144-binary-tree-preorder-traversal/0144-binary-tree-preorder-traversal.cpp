@@ -20,10 +20,44 @@ public:
         preorder(root->right);
     }
     vector<int> preorderTraversal(TreeNode* root) {
-        if(root==NULL)
+       //------------------ Recursive Solution //
+        // if(root==NULL)
+        //     return {};
+        // result.clear();
+        // preorder(root);
+        // return result;
+        //----------------- Iterative Solution //---------
+            if(root==NULL)
             return {};
         result.clear();
-        preorder(root);
+        queue<TreeNode*> left;
+        stack<TreeNode*> right;
+        left.push(root);
+        TreeNode* temp;
+        while(right.size()>0||left.size()>0){
+            if(left.size()>0){
+                temp=left.front();
+                left.pop();
+                result.push_back(temp->val);
+                if(temp->left!=NULL){
+                    left.push(temp->left);
+                }
+                if(temp->right!=NULL){
+                    right.push(temp->right);
+                }
+            }
+            else if(right.size()>0){
+                temp=right.top();
+                right.pop();
+                result.push_back(temp->val);
+                if(temp->left!=NULL){
+                    left.push(temp->left);
+                }
+                if(temp->right!=NULL){
+                    right.push(temp->right);
+                }
+            }
+        }
         return result;
     }
 };
