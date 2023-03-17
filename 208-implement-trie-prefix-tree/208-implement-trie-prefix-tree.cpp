@@ -6,9 +6,9 @@ public:
     Trie() {
         isWord=false;
         // ch;
-        for(int i=0;i<26;i++){
-            arr[i]=NULL;
-        }
+        // for(int i=0;i<26;i++){
+        //     arr[i]=NULL;
+        // }
     }
     
     void insert(string word) {
