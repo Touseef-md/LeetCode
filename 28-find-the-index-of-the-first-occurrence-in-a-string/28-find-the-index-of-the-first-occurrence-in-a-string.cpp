@@ -55,12 +55,98 @@ public:
         }
         return result;
     }
+//     abcxxxabc ab
+//     abcxxxabcy
+    //abceabcdabcfabc
+    //ababcdababd
+  //-10012001234
+    //aabaaac
+  //-101
+    vector<int> lpsArray(string& pat){
+        int i=1,j=2,count=0,n=pat.size();
+        vector<int> lps(n+1,0);
+        lps[0]=-1;
+        lps[1]=0;
+        while(j<=n){
+            if(pat[i-1]==pat[j-1]){
+                count++;
+                lps[j]=count;
+                i++;j++;
+            }
+            else{
+                if(i==1){
+                    lps[j]=count;
+                    // if(j==3){
+                    //     cout<<lps[j]<<" csdsf"<<endl;
+                    //     break;
+                    // }
+                    j++;
+                }
+                else{
+                    count=lps[i-1];
+                    i=lps[i-1]+1;
+                    // conti
+                }
+                // i=0;
+                // if(pat[i])
+                // count=0;
+                // if(i!=1){
+                //     i=lps[i];
+                //     count=lps[i];
+                //     continue;
+                //     // j--;
+                // }
+                // count=0;
+                // lps[j]=0;
+                // j++;
+            }
+            // cout<<i<<"  "<<j<<endl;
+        }
+        // cout<<"lps array"<<endl;
+        // for(int i=0;i<=n;i++){
+        //     cout<<i<<"  "<<lps[i]<<endl;
+        // }
+        // cout<<"Finished"<<endl;
+        return lps;
+    }
+    //abc
+    //def
+    //abcd
+    //acde
+    //j=j-(j-lps[j-1])
+    vector<int> KMP(string& text,string& pattern){
+        vector<int> lps=lpsArray(pattern);
+        int m=text.size(),n=pattern.size(),i=0,j=0;
+        vector<int> result;
+        while(i<m){
+            // cout<<i<<endl;
+            if(text[i]==pattern[j]){
+                i++;j++;
+                if(j==n){
+                    result.push_back(i-n);
+                    j=0;
+                }
+            }
+            else{
+                if(j==0){
+                    i++;
+                }
+                else{
+                    j=lps[j];//Because the lps array is 1 indexing based and here j is 0 indexed
+                }
+            }
+            // if(j==)
+        }
+        return result;
+    }
     
     int strStr(string haystack, string needle) {
-        vector<int> result=RabinKarpDoubleHash(haystack,needle);
-        if(result.size()==0)
-            return -1;
-        return result[0];
+        //--------------RABINKARP DOUBLE HASH
+        // vector<int> result=RabinKarpDoubleHash(haystack,needle);
+        // if(result.size()==0)
+        //     return -1;
+        // return result[0];
+        //--------------------------------------------
         // int n=haystack.size(),m=needle.size();
         // // if(haystack==needle)
         // //     return 0;
@@ -70,5 +156,10 @@ public:
         //     }
         // }
         // return -1;
+        //--------------------------KMP ALGORITHM---------
+        vector<int> kmpresult=KMP(haystack,needle);
+        if(kmpresult.size()==0)
+            return -1;
+        return kmpresult[0];
     }
 };
