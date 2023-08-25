@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<vector<int>> dp;
     bool solve(string &s1,string& s2,string& s3,int i,int j,int k){
-        if(k>=s3.size()){
+        if(k<=0){
             return true;
         }
         // if(i<0||j<0){
@@ -12,14 +12,14 @@ public:
             return dp[i][j];
         }
         bool temp_result=false;
-        if( s1[i]!=s3[k] && s2[j]!=s3[k]){
+        if(i>0&&j>0&&s1[i-1]!=s3[k-1]&&s2[j-1]!=s3[k-1]){
             return dp[i][j]=false;
         }
-        if(s1[i]==s3[k]){
-            temp_result|=solve(s1,s2,s3,i+1,j,k+1);
+        if(i>0&&s1[i-1]==s3[k-1]){
+            temp_result|=solve(s1,s2,s3,i-1,j,k-1);
         }
-        if(s2[j]==s3[k]){
-            temp_result|=solve(s1,s2,s3,i,j+1,k+1);
+        if(j>0&&s2[j-1]==s3[k-1]){
+            temp_result|=solve(s1,s2,s3,i,j-1,k-1);
         }
         return dp[i][j]=temp_result;
     }
@@ -31,6 +31,6 @@ public:
         int n=s2.size();
         dp.clear();
         dp.resize(m+1,vector<int>(n+1,-1));
-        return solve(s1,s2,s3,0,0,0);
+        return solve(s1,s2,s3,s1.size(),s2.size(),s3.size());
     }
 };
