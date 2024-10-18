@@ -11,20 +11,45 @@
  */
 class Solution {
 public:
+    
     unordered_map<int,int> mp;
-    bool dfs(TreeNode * root,int k){
-        if(root==NULL)
+    
+    bool dfs(TreeNode* root,int & k){
+        if(root == NULL){
             return false;
-        auto it=mp.find(k-root->val);
-        mp[root->val]++;
-        if(it!=mp.end())
+        }
+        auto it = mp.find(k-(root->val));
+        if(it !=mp.end()){
             return true;
-        if(dfs(root->left,k)||dfs(root->right,k))
+        }
+        mp[root->val]++;
+        if(dfs(root->left, k))
+            return true;
+        if(dfs(root->right, k))
             return true;
         return false;
+        
     }
-    bool findTarget(TreeNode* root, int k) {
+    bool findTarget(TreeNode* root, int k){
         return dfs(root,k);
-        // return false;
+        
     }
+    
+    
+    // unordered_map<int,int> mp;
+    // bool dfs(TreeNode * root,int k){
+    //     if(root==NULL)
+    //         return false;
+    //     auto it=mp.find(k-root->val);
+    //     mp[root->val]++;
+    //     if(it!=mp.end())
+    //         return true;
+    //     if(dfs(root->left,k)||dfs(root->right,k))
+    //         return true;
+    //     return false;
+    // }
+    // bool findTarget(TreeNode* root, int k) {
+    //     return dfs(root,k);
+    //     // return false;
+    // }
 };
